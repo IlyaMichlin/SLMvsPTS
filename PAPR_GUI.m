@@ -553,7 +553,7 @@ function btn_Simulate_Callback(hObject, eventdata, handles)
     % txt_Carriers          : number of carriers
     % txt_Length            : number of OFDM symbols
     % pop_Size              : IFFT size
-    % pop_Interpolation      : oversampling
+    % pop_Interpolation     : oversampling
     % txt_PhaseResolution   : SLM and PTS phase resolution
     % txt_SLMAttempts       : number of reduction attempts using SLM
     % pop_PartitionNumber   : number of partitions in PTS
