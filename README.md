@@ -1,6 +1,6 @@
 # PAPR Reduction Simulator Using SLM and PTS
 
-![](https://github.com/IlyaMichlin/SLMvsPTS/blob/master/images/MainWindow.png)
+![](https://github.com/IlyaMichlin/SLMvsPTS/blob/master/images/MainWindow.jpg)
 
 1. Simulation
     * OFDM: check to simulate OFDM signal and measure its PAPR
