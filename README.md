@@ -13,7 +13,6 @@
 
 3. OFDM
     * N: OFDM's IFFT size
-    * Interpolation: transmitted signal interpolation amount (currently not implemented)
     * OFDM Symbols: number of OFDM symbols (number of IFFTs)
 
 4. PAPR Reduction
