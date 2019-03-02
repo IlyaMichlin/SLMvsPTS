@@ -16,9 +16,6 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
 
 function [TxPAPR, SimulationTime, SER, CCDF] = OFDM_PAPR_Simulator(Config)
-    %% Initialize
-    % Config.q = Config.N / Config.L;             % Number of QAM symbols in OFDM symbol
-    
     %% Generate Data
     TxData = DataGenerator(Config.M, Config.Carriers, Config.m);
     TxCarriers = zeros(Config.N, Config.m);

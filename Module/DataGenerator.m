@@ -15,12 +15,9 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %
 
 function [Data] = DataGenerator(M, q, m)
-    %% Initialize
-    ModType = modem.qammod('M', M);
-
     %% Data Generator
     RawData = randi([0 (M - 1)], q, m);
 
     %% Modulator
-    Data = modulate(ModType, RawData);
+    Data = qammod(RawData, M);
 end

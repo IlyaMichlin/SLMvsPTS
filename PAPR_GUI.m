@@ -261,29 +261,6 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 
-% --- Executes on selection change in pop_Interpolation.
-function pop_Interpolation_Callback(hObject, eventdata, handles)
-% hObject    handle to pop_Interpolation (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: contents = cellstr(get(hObject,'String')) returns pop_Interpolation contents as cell array
-%        contents{get(hObject,'Value')} returns selected item from pop_Interpolation
-
-
-% --- Executes during object creation, after setting all properties.
-function pop_Interpolation_CreateFcn(hObject, eventdata, handles)
-% hObject    handle to pop_Interpolation (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    empty - handles not created until after all CreateFcns called
-
-% Hint: popupmenu controls usually have a white background on Windows.
-%       See ISPC and COMPUTER.
-if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
-    set(hObject,'BackgroundColor','white');
-end
-
-
 % --- Executes on selection change in popupmenu8.
 function popupmenu8_Callback(hObject, eventdata, handles)
 % hObject    handle to popupmenu8 (see GCBO)
@@ -530,7 +507,6 @@ function GUI_Objects_Enable(Enable, handles)
     set(handles.txt_Carriers, 'enable', en);
     set(handles.txt_Length, 'enable', en);
     set(handles.pop_Size, 'enable', en);
-    set(handles.pop_Interpolation, 'enable', en);
     set(handles.txt_PhaseResolution, 'enable', en);
     set(handles.txt_SLMAttempts, 'enable', en);
     set(handles.pop_PartitionNumber, 'enable', en);
@@ -553,7 +529,6 @@ function btn_Simulate_Callback(hObject, eventdata, handles)
     % txt_Carriers          : number of carriers
     % txt_Length            : number of OFDM symbols
     % pop_Size              : IFFT size
-    % pop_Interpolation     : oversampling
     % txt_PhaseResolution   : SLM and PTS phase resolution
     % txt_SLMAttempts       : number of reduction attempts using SLM
     % pop_PartitionNumber   : number of partitions in PTS
@@ -579,17 +554,14 @@ function btn_Simulate_Callback(hObject, eventdata, handles)
     % QAM constellation order size
     Config.M = str2num(cell2mat(Ms(Mvalue)));
     % Number of carriers
-    Config.Carriers = str2num(get(handles.txt_Carriers, 'string'));
+    Config.Carriers_gui = str2num(get(handles.txt_Carriers, 'string'));
+    Config.Carriers = Config.Carriers_gui;
     % Number of OFDM symbols to be simulated
     Config.m = str2num(get(handles.txt_Length, 'string'));
     Ns = get(handles.pop_Size, 'string');
     Nvalue = get(handles.pop_Size, 'value');
     % Size of OFDM symbols
     Config.N = str2num(Ns(Nvalue, :));
-    Ls = get(handles.pop_Interpolation, 'string');
-    Lvalue = get(handles.pop_Interpolation, 'value');
-    % Up-sampling factor
-    Config.Interpolation = str2num(cell2mat(Ls(Lvalue)));
     % Number of partitions
     Config.PhaseRes = str2num(get(handles.txt_PhaseResolution, 'string'));
     % SLM resolution
@@ -606,7 +578,7 @@ function btn_Simulate_Callback(hObject, eventdata, handles)
     % Simulate OFDM tranceiver with SLM (0 - Not to simulate)
     Config.SimulateSLM = get(handles.cbx_SLM, 'value');
     % Simulate OFDM tranceiver with PTS (0 - Not to simulate)
-    Config.SimulatePTS = get(handles.cbx_PTS, 'value');
+    Config.SimulatePTS = str2num(get(handles.txt_PTSAttempts, 'string'));
 
     Parameter = get(handles.pop_Parameter, 'value');
     ParameterNames = get(handles.pop_Parameter, 'string');

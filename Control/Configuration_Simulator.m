@@ -55,16 +55,20 @@ function [TxPAPR, SimulationTime, SER, CCDF, Legend] = Configuration_Simulator(C
                 Config.M = Values(n);
             case 3 % N - Size
                 Config.N = Values(n);
-            case 4 % L - Oversampling
-                Config.L = Values(n);
-            case 5 % PhaseRes - Phase Resolution
+            case 4 % PhaseRes - Phase Resolution
                 Config.PhaseRes = Values(n);
-            case 6 % SLMDeph - SLM Attempts
+            case 5 % SLMDeph - SLM Attempts
                 Config.SLMDeph = Values(n);
-            case 7 % PTSPartitions - Partition Number
+            case 6 % PTSPartitions - Partition Number
                 Config.PTSPartitions = Values(n);
-            case 8 % PTSDeph - PTS Attempts
+            case 7 % PTSDeph - PTS Attempts
                 Config.PTSDeph = Values(n);
+        end
+    
+        if Config.Carriers_gui == 0
+            Config.Carriers = Config.N;
+        else
+            Config.Carriers = Config.Carriers_gui;
         end
         
         if Parameter == 1 % NONE
