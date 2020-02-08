@@ -33,3 +33,5 @@
 7. Simulate: start simulation button
 
 8. Log Bar: displays last log
+
+Notice: run the 'PAPR_GUI.m' and NOT 'PAPR_GUI.fig'!
